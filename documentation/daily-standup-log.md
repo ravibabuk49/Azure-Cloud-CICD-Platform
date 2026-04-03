@@ -2,7 +2,7 @@
 
 ## Day 1 — Project Foundation
 
-**Date:** $(date +%Y-%m-%d)
+**Date:** 03-04-2026
 
 **What I did:**
 - Created GitHub repo Azure-Cloud-CICD-Platform (public)
