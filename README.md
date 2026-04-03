@@ -1,5 +1,4 @@
 # Azure Cloud CICD Platform
-
 ![CI Pipeline](https://github.com/ravibabuk49/Azure-Cloud-CICD-Platform/actions/workflows/ci.yml/badge.svg)
 ![Terraform](https://github.com/ravibabuk49/Azure-Cloud-CICD-Platform/actions/workflows/terraform-infra.yml/badge.svg)
 
@@ -16,7 +15,7 @@
 | Canary Deployments | Argo Rollouts |
 | Security | OPA Gatekeeper · cosign · Trivy · Defender |
 | Observability | Log Analytics · App Insights · Azure Monitor |
-| Automation | Python 3.12 (8 scripts) |
+| Automation | Python 3.12 (scripts) |
 | Boards | Azure DevOps (Scrum) |
 
 ## Project Status
