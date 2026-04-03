@@ -1,23 +1,24 @@
-# Daily Standup Log
-
 ## Day 1 — Project Foundation
 
-**Date:** 03-04-2026
+**Date:** 2025-04-03
 
 **What I did:**
 - Created GitHub repo Azure-Cloud-CICD-Platform (public)
-- Built full folder structure
-- Created ADO organization and project (Scrum)
+- Built full folder structure and .gitignore
+- Created ADO organization and project (Scrum process)
 - Created Epic, 8 Features, Sprint 1, 5 PBIs
-- Logged in to Azure CLI — $200 credit confirmed active
+- Logged in to Azure cloud from azure CLI
+- Created 4 Azure resource groups with tags in eastus
+- Activated Python azure_env, installed 3 missing Azure SDK packages
+- Wrote and ran azure_env_check.py — 9/9 checks passing
+- Wrote ADR-001 through ADR-005
 
 **What I learned:**
-- ADO Scrum process uses PBIs not User Stories
-- gh CLI creates and clones repo in one command
+- subprocess.run() requires flags as separate list items not a single string
+- ADO Scrum process uses PBIs and Effort — not User Stories and Story Points
 
 **What is next:**
-- Create 4 Azure resource groups with tags
-- Set up Python environment
-- Write azure_env_check.py
-- Write ADR-001 through ADR-005
-- First commit and push
+- Day 2 — Write ACR Terraform module and deploy
+- Fork eShopOnWeb repository
+- Write production Dockerfile
+- Write acr_manager.py
