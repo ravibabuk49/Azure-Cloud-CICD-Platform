@@ -1,0 +1,30 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+!infrastructure/environments/*.tfvars
+.terraform.lock.hcl
+tfplan
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+azure_env/
+.env
+*.env
+
+# Azure
+.azure/
+local.settings.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.pem
+*.key
+cosign.key
+credentials-velero
