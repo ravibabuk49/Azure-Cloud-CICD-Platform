@@ -15,3 +15,18 @@
   columns are New → Approved → Committed → Done.
 - **heredoc single quotes** — << 'EOF' prevents variable expansion.
   Use << EOF when you need $(date) or other variables to evaluate.
+
+
+## Day 2
+
+- **Terraform plan -out flag** — always save plan with -out=tfplan 
+  then apply that exact plan. Prevents unexpected changes between plan and apply.
+- **Azure Boards + GitHub integration** — use AB# followed by PBI ID 
+  in commit messages to automatically link commits to work items.
+- **Storage account CLI issue** — az storage account create failed with 
+  SubscriptionNotFound despite correct subscription being set. 
+  Workaround: create via portal. Root cause unclear — possibly a CLI bug 
+  with the free tier account tenant configuration.
+- **Docker layer caching** — copy .csproj files first, run dotnet restore, 
+  then copy source code. If source changes but dependencies don't, 
+  restore layer is cached — significantly faster builds.

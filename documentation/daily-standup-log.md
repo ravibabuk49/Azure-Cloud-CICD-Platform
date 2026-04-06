@@ -22,3 +22,28 @@
 - Fork eShopOnWeb repository
 - Write production Dockerfile
 - Write acr_manager.py
+
+
+
+## Day 2 — ACR Terraform Module + eShopOnWeb Fork
+
+**Date:** 2026-04-06
+
+**What I did:**
+- Created Terraform root configuration (providers.tf, backend.tf, main.tf, variables.tf)
+- Wrote ACR Terraform module (main.tf, variables.tf, outputs.tf)
+- Created Terraform remote state storage account manually via portal
+- Ran terraform init, validate, plan, apply — ACR deployed successfully
+- Connected Azure Boards with GitHub — PBI linking working via AB# syntax
+- Forked eShopOnWeb into application/ folder
+- Written production multi-stage Dockerfile and .dockerignore
+
+**What is next:**
+- Build Docker image locally and verify
+- Push image to ACR
+- Write acr_manager.py
+- Enable Defender for Containers
+
+**Blockers:**
+- az storage account create failing with SubscriptionNotFound — resolved by creating storage account via portal
+
