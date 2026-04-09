@@ -1,0 +1,23 @@
+az group create \
+  --name rg-eshoponweb-infra \
+  --location eastus \
+  --tags Project=Azure-Cloud-CICD-Platform Environment=shared Owner=ravibabuk49
+
+az group create \
+  --name rg-eshoponweb-aks \
+  --location eastus \
+  --tags Project=Azure-Cloud-CICD-Platform Environment=dev Owner=ravibabuk49
+
+az group create \
+  --name rg-eshoponweb-acr \
+  --location eastus \
+  --tags Project=Azure-Cloud-CICD-Platform Environment=shared Owner=ravibabuk49
+
+az group create \
+  --name rg-eshoponweb-monitoring \
+  --location eastus \
+  --tags Project=Azure-Cloud-CICD-Platform Environment=shared Owner=ravibabuk49
+
+
+verify all 4 were created:
+az group list --output table

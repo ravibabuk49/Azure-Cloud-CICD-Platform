@@ -1,0 +1,18 @@
+Go to portal.azure.com:
+Search Storage accounts → click Create
+Fill in:
+
+Resource group: rg-eshoponweb-infra
+Storage account name: tfstateeshoponweb
+Region: East US
+Performance: Standard
+Redundancy: LRS
+
+Click Review + Create → Create
+
+--
+
+az storage container create \
+  --name tfstate \
+  --account-name tfstateeshoponweb \
+  --auth-mode login

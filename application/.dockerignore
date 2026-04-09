@@ -1,0 +1,14 @@
+.dockerignore
+.git/
+.gitignore
+.vs
+.vscode
+*/bin
+*/obj
+**/.toolstarget
+.github/
+tests/
+**/*.md
+**/.vs/
+.env*
+infra/
