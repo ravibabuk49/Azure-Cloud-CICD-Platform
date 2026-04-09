@@ -25,25 +25,42 @@
 
 
 
-## Day 2 — ACR Terraform Module + eShopOnWeb Fork
+## Day 2 — ACR Terraform Module + Docker + ACR Push
 
-**Date:** 2026-04-06
+**Date:** 2026-04-06 to 2026-04-09
 
 **What I did:**
 - Created Terraform root configuration (providers.tf, backend.tf, main.tf, variables.tf)
 - Wrote ACR Terraform module (main.tf, variables.tf, outputs.tf)
 - Created Terraform remote state storage account manually via portal
-- Ran terraform init, validate, plan, apply — ACR deployed successfully
+- Ran terraform init, validate, plan -out=tfplan, apply — ACR deployed successfully
 - Connected Azure Boards with GitHub — PBI linking working via AB# syntax
 - Forked eShopOnWeb into application/ folder
-- Written production multi-stage Dockerfile and .dockerignore
+- Fixed Dockerfile — root cause was missing Directory.Packages.props
+  and global.json in Docker build context
+- Built eshoponweb:local image successfully (430MB runtime image)
+- Pushed eshoponweb:v1 to ACR successfully
+- Wrote and ran acr_manager.py — confirmed v1 tag visible in ACR
+- Enabled Defender for Containers (29 days free trial active)
+- Created scripts/python/README.md documenting all 8 scripts
 
-**What is next:**
-- Build Docker image locally and verify
-- Push image to ACR
-- Write acr_manager.py
-- Enable Defender for Containers
+**What I learned:**
+- eShopOnWeb uses central package management via Directory.Packages.props
+- Multi-stage Docker build discards 2.23GB build stage, keeps 430MB runtime image
+- Azure Boards + GitHub integration links commits to PBIs via AB# syntax
+- Defender for Containers provides 3 layers of protection: image scanning,
+  runtime threat detection, and security posture recommendations
 
 **Blockers:**
-- az storage account create failing with SubscriptionNotFound — resolved by creating storage account via portal
+- az storage account create failed with SubscriptionNotFound despite correct
+  subscription being active — resolved by creating storage account via portal
+- Dockerfile failed 3 times before identifying Directory.Packages.props
+  as the missing file in build context
+
+**What is next:**
+- Day 3 — Write AKS and Log Analytics Terraform modules
+- Deploy AKS cluster via terraform apply
+- Connect kubectl to AKS
+- Create 3 namespaces, install KEDA
+- Write aks_health.py
 

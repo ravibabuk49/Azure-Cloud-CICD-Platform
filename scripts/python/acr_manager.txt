@@ -1,0 +1,21 @@
+This connects to your ACR, lists all repositories and their image tags with metadata, then flags any images older than a specified number of days that should be cleaned up.
+
+Detailed breakdown of what happens when you run it:
+Step 1 — Lists all repositories
+Runs az acr repository list and prints every repo in your ACR. Right now you have one: eshoponweb.
+
+Step 2 — Lists all tags per repository
+For each repository, runs az acr repository show-tags --detail which returns tag name, last updated date, and digest (unique image fingerprint). 
+Prints them as a formatted table.
+
+Step 3 — Finds old images
+For each tag, calculates how many days ago it was last updated using Python's datetime module. 
+If the age is >= your --days threshold (default 30), it flags it. Prints flagged images in a separate table.
+
+Step 4 — Summary
+Tells you how many old images were found and suggests running image_cleanup.py to delete them.
+
+Why this is useful in real work:
+ACR storage accumulates old images over time — every CI build pushes a new tag. 
+Without regular cleanup, storage costs grow. This script gives you visibility before you delete anything. 
+image_cleanup.py (Day 9) handles the actual deletion with a --dry-run safety flag.
