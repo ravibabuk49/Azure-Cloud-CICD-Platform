@@ -48,3 +48,28 @@
   base (218MB) and is only 430MB. Multi-stage is mandatory for .NET apps
   in production — never ship the SDK in the runtime image.
   
+
+  ## Day 3
+
+- **depends_on in Terraform** — AKS module uses depends_on = [module.monitoring]
+  because it needs the Log Analytics workspace_id output. Without this,
+  Terraform might try to create AKS before the workspace exists.
+
+- **enable_auto_scaling vs auto_scaling_enabled** — attribute name changed
+  between AzureRM provider versions. For v3.110.0 the correct name is
+  enable_auto_scaling. Always check provider version when hitting attribute errors.
+
+- **omsagent renamed to ama-logs** — Microsoft renamed the Container Insights
+  agent from omsagent to ama-logs in newer AKS versions. grep omsagent
+  returns nothing — use grep ama-logs instead.
+
+- **ACR attachment via managed identity** — az aks update --attach-acr
+  grants AcrPull role to AKS kubelet identity. No image pull secrets needed
+  in Kubernetes manifests. Always use managed identity over stored credentials.
+
+- **Terraform module output chaining** — module.monitoring.workspace_id
+  passes the Log Analytics workspace ID directly to the AKS module.
+  Outputs from one module become inputs to another — this is the correct
+  pattern for dependent resources.
+
+  
