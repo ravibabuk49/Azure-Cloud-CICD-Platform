@@ -64,3 +64,31 @@
 - Create 3 namespaces, install KEDA
 - Write aks_health.py
 
+## Day 3 — AKS Cluster Deployment via Terraform
+
+**Date:** 2026-04-13
+
+**What I did:**
+- Wrote Log Analytics Terraform module (main.tf, variables.tf, outputs.tf)
+- Wrote AKS Terraform module (main.tf, variables.tf, outputs.tf)
+- Updated root main.tf and variables.tf to include monitoring and AKS modules
+- Updated dev.tfvars with AKS and Log Analytics values
+- Ran terraform init, plan, apply — deployed Log Analytics + AKS in 5m43s
+- Connected kubectl to AKS cluster
+- Created 3 namespaces: eshoponweb-dev, eshoponweb-staging, eshoponweb-prod
+- Installed KEDA via Helm — all 3 pods running
+- Attached ACR to AKS via managed identity — no credentials needed
+- Verified Container Insights running as ama-logs (renamed from omsagent)
+- Wrote and ran aks_health.py — 1 node ready, 3 namespaces checked
+
+**What I learned:**
+- Log Analytics must be deployed before AKS — depends_on ensures ordering
+- Microsoft renamed omsagent to ama-logs in newer AKS versions
+- enable_auto_scaling attribute name varies by AzureRM provider version
+- OIDC issuer is automatically enabled on new AKS clusters
+
+**What is next:**
+- Day 4 — Key Vault Terraform module
+- GitHub OIDC federated credentials setup
+- Self-hosted GHA runner inside VNet
+- Write kv_expiry_checker.py
