@@ -24,3 +24,9 @@ tags = {
   Owner       = "ravibabuk49"
   ManagedBy   = "Terraform"
 }
+
+# Key Vault
+keyvault_name              = "kv-eshoponweb-dev"
+infra_resource_group_name  = "rg-eshoponweb-infra"
+tenant_id                  = "1b8dc78a-ea1c-4329-9d68-460d405b5904"
+soft_delete_retention_days = 90

@@ -80,3 +80,26 @@ variable "tags" {
     ManagedBy   = "Terraform"
   }
 }
+
+# ── Key Vault
+variable "keyvault_name" {
+  description = "Name of the Key Vault (must be globally unique)"
+  type        = string
+}
+
+variable "infra_resource_group_name" {
+  description = "Resource group for infrastructure resources"
+  type        = string
+  default     = "rg-eshoponweb-infra"
+}
+
+variable "tenant_id" {
+  description = "Azure AD tenant ID"
+  type        = string
+}
+
+variable "soft_delete_retention_days" {
+  description = "Days to retain soft deleted secrets"
+  type        = number
+  default     = 90
+}

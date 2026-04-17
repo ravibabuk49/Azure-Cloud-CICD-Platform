@@ -32,3 +32,13 @@ module "aks" {
 
   depends_on = [module.monitoring]
 }
+
+module "keyvault" {
+  source                     = "./modules/keyvault"
+  keyvault_name              = var.keyvault_name
+  resource_group_name        = var.infra_resource_group_name
+  location                   = var.location
+  tenant_id                  = var.tenant_id
+  soft_delete_retention_days = var.soft_delete_retention_days
+  tags                       = var.tags
+}

@@ -72,4 +72,20 @@
   Outputs from one module become inputs to another — this is the correct
   pattern for dependent resources.
 
-  
+  ## Day 4
+
+- **Key Vault RBAC model** — enable_rbac_authorization=true means access
+  is controlled via Azure RBAC roles not access policies. Always use RBAC
+  model — it is the modern standard and integrates with managed identity.
+
+- **GitHub OIDC federated credentials** — requires separate credential
+  for each trigger type: one for main branch pushes, one for PRs.
+  Subject claim format is exact: repo:owner/repo:ref:refs/heads/main
+
+- **purge_protection_enabled=false** — set to false in dev so we can
+  delete and recreate the vault during development. Always set to true
+  in production — once enabled it cannot be disabled.
+
+- **az keyvault secret list vs show** — list returns names and metadata
+  but NOT expiry dates. Must call show per secret to get expiry.
+  kv_expiry_checker.py handles this by calling list then show per secret.
