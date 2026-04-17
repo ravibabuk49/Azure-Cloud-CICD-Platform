@@ -92,3 +92,27 @@
 - GitHub OIDC federated credentials setup
 - Self-hosted GHA runner inside VNet
 - Write kv_expiry_checker.py
+
+## Day 4 — Key Vault, GitHub OIDC & Self-Hosted GHA Runner
+
+**Date:** 2026-04-17
+
+**What I did:**
+- Wrote Key Vault Terraform module (main.tf, variables.tf, outputs.tf)
+- Deployed Key Vault via terraform apply
+- Stored 4 initial secrets in Key Vault (ACR, AKS values)
+- Configured GitHub OIDC federated credentials — passwordless Azure auth
+- Created App Registration, Service Principal, federated credentials
+- Added AZURE_CLIENT_ID, TENANT_ID, SUBSCRIPTION_ID to GitHub secrets
+- Tested OIDC via test-oidc.yml workflow — verified passing
+- Deployed self-hosted GHA runner as ACI
+- Verified runner showing Idle in GitHub Actions settings
+- Wrote kv_expiry_checker.py — lists secrets and flags expiry
+
+**What I learned:**
+- System node pools cannot scale to 0 — must stop entire cluster
+- OIDC federated credentials require separate credentials per branch/event
+- Self-hosted runner needs ACCESS_TOKEN as secure environment variable
+
+**What is next:**
+- Day 5 — Network infrastructure Terraform module (VNet, NSGs, private endpoints)
