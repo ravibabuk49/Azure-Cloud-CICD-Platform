@@ -111,4 +111,8 @@ variable "vnet_name" {
   default     = "vnet-eshoponweb-dev"
 }
 
-
+variable "subscription_id" {
+  description = "Azure subscription ID"
+  type        = string
+  default     = "8a0711fc-8c85-42c7-9206-9630c05a9477"
+}
