@@ -23,3 +23,26 @@ resource "azurerm_role_assignment" "kv_secrets_officer" {
   role_definition_name = "Key Vault Secrets Officer"
   principal_id         = data.azurerm_client_config.current.object_id
 }
+
+
+# ── Private Endpoint for Key Vault
+resource "azurerm_private_endpoint" "kv_pe" {
+  name                = "pe-kv-eshoponweb"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  subnet_id           = var.pe_subnet_id
+
+  private_service_connection {
+    name                           = "psc-kv"
+    private_connection_resource_id = azurerm_key_vault.kv.id
+    subresource_names              = ["vault"]
+    is_manual_connection           = false
+  }
+
+  private_dns_zone_group {
+    name                 = "kv-dns-zone-group"
+    private_dns_zone_ids = [var.kv_private_dns_zone_id]
+  }
+
+  tags = var.tags
+}

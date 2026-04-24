@@ -1,5 +1,12 @@
 # Root module — calls all sub-modules
 
+module "network" {
+  source              = "./modules/network"
+  vnet_name           = var.vnet_name
+  resource_group_name = var.infra_resource_group_name
+  location            = var.location
+  tags                = var.tags
+}
 
 module "monitoring" {
   source              = "./modules/monitoring"
@@ -10,11 +17,27 @@ module "monitoring" {
 }
 
 module "acr" {
-  source              = "./modules/acr"
-  acr_name            = var.acr_name
-  resource_group_name = var.acr_resource_group_name
-  location            = var.location
-  tags                = var.tags
+  source                  = "./modules/acr"
+  acr_name                = var.acr_name
+  resource_group_name     = var.acr_resource_group_name
+  location                = var.location
+  tags                    = var.tags
+
+  depends_on = [module.network]
+}
+
+module "keyvault" {
+  source                     = "./modules/keyvault"
+  keyvault_name              = var.keyvault_name
+  resource_group_name        = var.infra_resource_group_name
+  location                   = var.location
+  tenant_id                  = var.tenant_id
+  soft_delete_retention_days = var.soft_delete_retention_days
+  pe_subnet_id               = module.network.pe_subnet_id
+  kv_private_dns_zone_id     = module.network.kv_private_dns_zone_id
+  tags                       = var.tags
+
+  depends_on = [module.network]
 }
 
 module "aks" {
@@ -30,15 +53,5 @@ module "aks" {
   log_analytics_workspace_id = module.monitoring.workspace_id
   tags                       = var.tags
 
-  depends_on = [module.monitoring]
-}
-
-module "keyvault" {
-  source                     = "./modules/keyvault"
-  keyvault_name              = var.keyvault_name
-  resource_group_name        = var.infra_resource_group_name
-  location                   = var.location
-  tenant_id                  = var.tenant_id
-  soft_delete_retention_days = var.soft_delete_retention_days
-  tags                       = var.tags
+  depends_on = [module.monitoring, module.network]
 }

@@ -29,3 +29,15 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "pe_subnet_id" {
+  description = "Subnet ID for private endpoint"
+  type        = string
+  default     = ""
+}
+
+variable "kv_private_dns_zone_id" {
+  description = "Private DNS zone ID for Key Vault"
+  type        = string
+  default     = ""
+}
