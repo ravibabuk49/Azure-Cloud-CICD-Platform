@@ -17,11 +17,11 @@ module "monitoring" {
 }
 
 module "acr" {
-  source                  = "./modules/acr"
-  acr_name                = var.acr_name
-  resource_group_name     = var.acr_resource_group_name
-  location                = var.location
-  tags                    = var.tags
+  source              = "./modules/acr"
+  acr_name            = var.acr_name
+  resource_group_name = var.acr_resource_group_name
+  location            = var.location
+  tags                = var.tags
 
   depends_on = [module.network]
 }
