@@ -24,3 +24,21 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "pe_subnet_id" {
+  description = "Subnet ID for private endpoint"
+  type        = string
+  default     = ""
+}
+
+variable "acr_private_dns_zone_id" {
+  description = "Private DNS zone ID for ACR"
+  type        = string
+  default     = ""
+}
+
+variable "enable_private_endpoint" {
+  description = "Whether to create a private endpoint for ACR"
+  type        = bool
+  default     = false
+}
