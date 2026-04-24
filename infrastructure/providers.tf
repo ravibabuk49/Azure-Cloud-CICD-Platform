@@ -19,16 +19,9 @@ provider "azurerm" {
       purge_soft_delete_on_destroy = false
     }
   }
-
-  # OIDC authentication for GitHub Actions
-  use_oidc        = true
-  client_id       = var.client_id
-  tenant_id       = var.tenant_id
-  subscription_id = var.subscription_id
+  use_oidc = true
 }
 
 provider "azuread" {
-  use_oidc  = true
-  client_id = var.client_id
-  tenant_id = var.tenant_id
+  use_oidc = true
 }
