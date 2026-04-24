@@ -106,6 +106,9 @@ jobs:
         run: |
           terraform plan \
             -var-file=environments/dev.tfvars \
+            -var="client_id=${{ secrets.AZURE_CLIENT_ID }}" \
+            -var="tenant_id=${{ secrets.AZURE_TENANT_ID }}" \
+            -var="subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
             -no-color \
             -out=tfplan \
             2>&1 | tee plan_output.txt
@@ -192,4 +195,9 @@ jobs:
 
       - name: Terraform Apply
         working-directory: ${{ env.WORKING_DIR }}
-        run: terraform apply -auto-approve tfplan
+        run: |
+          terraform apply \
+            -var="client_id=${{ secrets.AZURE_CLIENT_ID }}" \
+            -var="tenant_id=${{ secrets.AZURE_TENANT_ID }}" \
+            -var="subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
+            -auto-approve tfplan
