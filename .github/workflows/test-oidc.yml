@@ -1,3 +1,11 @@
+# This workflow tests OIDC authentication with Azure Login action.
+# It is triggered manually via workflow_dispatch and requires the following secrets:
+# - AZURE_CLIENT_ID: The client ID of the Azure AD application.
+# - AZURE_TENANT_ID: The tenant ID of the Azure AD.
+# - AZURE_SUBSCRIPTION_ID: The subscription ID to access.
+# The workflow logs in to Azure using OIDC and verifies the login by listing the current account and resource groups. 
+# Note: Ensure that the Azure AD application has the necessary permissions to access the subscription and resources.
+
 name: Test OIDC Authentication
 
 on:
