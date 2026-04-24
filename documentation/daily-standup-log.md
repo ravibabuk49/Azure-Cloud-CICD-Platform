@@ -116,3 +116,27 @@
 
 **What is next:**
 - Day 5 — Network infrastructure Terraform module (VNet, NSGs, private endpoints)
+
+
+## Day 5 — Network Infrastructure Terraform Module
+
+**Date:** 2026-04-17
+
+**What I did:**
+- Wrote Network Terraform module (VNet, 3 subnets, NSG, private DNS zones)
+- Deployed VNet with 3 subnets: snet-aks, snet-private-endpoints, snet-runner
+- Added NSG with deny-internet-inbound and allow-https-outbound rules
+- Created private DNS zones for ACR and Key Vault linked to VNet
+- Added Key Vault private endpoint successfully
+- Skipped ACR private endpoint — Basic SKU does not support it (Premium required)
+- AKS modified to reference network module outputs
+- Validated all network resources via az CLI
+
+**What I learned:**
+- ACR Basic SKU does not support private endpoints — Premium SKU required
+- AKS cannot be modified while in stopped state — must be running
+- Private DNS zones need VNet links for DNS resolution to work
+- Runner subnet needs ACI delegation for Container Instance deployment
+
+**What is next:**
+- Day 6 — GitHub Actions IaC pipeline (Terraform workflow)

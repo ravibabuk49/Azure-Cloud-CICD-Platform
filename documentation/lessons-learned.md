@@ -89,3 +89,22 @@
 - **az keyvault secret list vs show** — list returns names and metadata
   but NOT expiry dates. Must call show per secret to get expiry.
   kv_expiry_checker.py handles this by calling list then show per secret.
+
+
+  ## Day 5
+
+- **ACR private endpoint requires Premium SKU** — Basic SKU ($5/month)
+  does not support private endpoints. Premium SKU costs ~$150/month.
+  For a lab environment Basic SKU is acceptable — document the limitation.
+
+- **AKS must be running for Terraform modifications** — terraform apply
+  fails with OperationNotAllowed if AKS is in stopped state. Always
+  start AKS before running terraform apply when AKS module is included.
+
+- **Private DNS zone VNet linking** — DNS zone must be linked to VNet
+  for private endpoint DNS resolution. Without the link, DNS resolves
+  to public IP instead of private IP inside the VNet.
+
+- **Terraform partial apply** — when apply fails midway, some resources
+  are created and some are not. State file tracks what was created.
+  Fix the error and re-run apply — Terraform only creates missing resources.
