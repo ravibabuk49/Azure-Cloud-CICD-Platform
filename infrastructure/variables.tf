@@ -111,15 +111,4 @@ variable "vnet_name" {
   default     = "vnet-eshoponweb-dev"
 }
 
-# ── Provider Authentication
-variable "client_id" {
-  description = "Azure AD application client ID for OIDC"
-  type        = string
-  default     = ""
-}
 
-variable "subscription_id" {
-  description = "Azure subscription ID"
-  type        = string
-  default     = ""
-}
