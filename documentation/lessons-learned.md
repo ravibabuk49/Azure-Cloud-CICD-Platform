@@ -107,4 +107,4 @@
 
 - **Terraform partial apply** — when apply fails midway, some resources
   are created and some are not. State file tracks what was created.
-  Fix the error and re-run apply — Terraform only creates missing resources.
+  Fix the error and re-run apply — Terraform only creates missing resources

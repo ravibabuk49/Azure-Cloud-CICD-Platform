@@ -120,7 +120,7 @@
 
 ## Day 5 — Network Infrastructure Terraform Module
 
-**Date:** 2026-04-17
+**Date:** 2026-04-24
 
 **What I did:**
 - Wrote Network Terraform module (VNet, 3 subnets, NSG, private DNS zones)
