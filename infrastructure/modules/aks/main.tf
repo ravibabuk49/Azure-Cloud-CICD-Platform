@@ -23,7 +23,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     type = "SystemAssigned"
   }
 
-# FIX: Tell Terraform the OIDC issuer is enabled so it stops trying to disable it
+  # FIX: Tell Terraform the OIDC issuer is enabled so it stops trying to disable it
   oidc_issuer_enabled = true
 
   # Container Insights — linked to Log Analytics
